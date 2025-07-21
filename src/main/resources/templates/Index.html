@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Digital Journal</title>
+</head>
+<body style="margin:0; font-family:'Segoe UI', sans-serif; background:linear-gradient(to right, #ffe0c3, #ffecd2);">
+
+<!-- Navigation -->
+<div style="background:#333; padding:15px; display:flex; justify-content:space-between; align-items:center;">
+  <div style="color:white; font-weight:bold; font-size:20px; display:flex; align-items:center; padding-left:20px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" style="height:36px; margin-right:10px;">
+    My Digital Journal
+  </div>
+
+  <div style="padding-right:20px;">
+    <a th:href="@{/}" style="color:white; text-decoration:none; margin:0 5px;">🏠 Home</a>
+    <a th:href="@{/new-entry}" style="color:white; text-decoration:none; margin:0 5px;">✍️ New Entry</a>
+    <a th:href="@{/entries}" style="color:white; text-decoration:none; margin:0 5px;">📖 Entries</a>
+    <a th:href="@{/calendar}" style="color:white; text-decoration:none; margin:0 5px;">📅 Calendar</a>
+  </div>
+</div>
+
+<!-- Slideshow -->
+<div style="position:relative; height:300px; overflow:hidden;">
+  <div id="slide1" style="position:absolute; top:0; left:0; right:0; bottom:0; background-size:cover; background-position:center; transition:opacity 1.5s ease-in-out; z-index:1;"></div>
+  <div id="slide2" style="position:absolute; top:0; left:0; right:0; bottom:0; background-size:cover; background-position:center; transition:opacity 1.5s ease-in-out; z-index:2;"></div>
+  <div style="position:relative; z-index:3; text-align:center; color:white; padding-top:80px; background:rgba(0,0,0,0.4); height:100%;">
+    <h1 style="font-size:48px; font-weight:bold;">📔 My Digital Journal</h1>
+    <p style="font-size:20px;">Write. Reflect. Grow. 🌱</p>
+  </div>
+</div>
+
+<!-- Cards -->
+<div style="display:flex; flex-wrap:wrap; justify-content:center; padding:40px 10px;">
+
+  <div style="background:white; width:300px; margin:15px; border-radius:15px; padding:15px;
+              box-shadow:0 8px 16px rgba(0,0,0,0.1); transition:transform 0.3s; text-align:center;">
+    <a th:href="@{'/entries?category=Daily Thoughts'}" style="text-decoration:none; color:black;">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=500&q=60" style="width:100%; border-radius:10px; margin-bottom:10px;">
+      <h3>📘 Daily Thoughts</h3>
+      <p>Write what’s on your mind — the honest, the raw, and the beautiful.</p>
+    </a>
+  </div>
+
+  <div style="background:white; width:300px; margin:15px; border-radius:15px; padding:15px;
+              box-shadow:0 8px 16px rgba(0,0,0,0.1); transition:transform 0.3s; text-align:center;">
+    <a th:href="@{'/entries?category=Goal Tracker'}" style="text-decoration:none; color:black;">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:10px; margin-bottom:10px;">
+      <h3>📘 Goal Tracker</h3>
+      <p>Set, track, and reflect on goals that matter most to you.</p>
+    </a>
+  </div>
+
+  <div style="background:white; width:300px; margin:15px; border-radius:15px; padding:15px;
+              box-shadow:0 8px 16px rgba(0,0,0,0.1); transition:transform 0.3s; text-align:center;">
+    <a th:href="@{'/entries?category=Reflections'}" style="text-decoration:none; color:black;">
+      <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:10px; margin-bottom:10px;">
+      <h3>📘 Reflections</h3>
+      <p>Look back, learn, and understand your journey better.</p>
+    </a>
+  </div>
+
+  <div style="background:white; width:300px; margin:15px; border-radius:15px; padding:15px;
+              box-shadow:0 8px 16px rgba(0,0,0,0.1); transition:transform 0.3s; text-align:center;">
+    <a th:href="@{'/entries?category=Memories'}" style="text-decoration:none; color:black;">
+      <img src="https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?auto=format&fit=crop&w=500&q=60" style="width:100%; border-radius:10px; margin-bottom:10px;">
+      <h3>📘 Memories</h3>
+      <p>Save beautiful moments and precious memories forever.</p>
+    </a>
+  </div>
+
+  <div style="background:white; width:300px; margin:15px; border-radius:15px; padding:15px;
+              box-shadow:0 8px 16px rgba(0,0,0,0.1); transition:transform 0.3s; text-align:center;">
+    <a th:href="@{'/entries?category=Affirmations'}" style="text-decoration:none; color:black;">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=60" style="width:100%; border-radius:10px; margin-bottom:10px;">
+      <h3>📘 Affirmations</h3>
+      <p>Write daily affirmations to inspire, strengthen, and uplift.</p>
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="background:#333; color:white; padding:30px 20px;">
+  <div style="max-width:1000px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between;">
+    <div style="flex:1; min-width:200px;">
+      <h3>Quick Links</h3>
+      <p><a th:href="@{/' }" style="color:#fff;">🏠 Home</a></p>
+      <p><a th:href="@{/new-entry}" style="color:#fff;">✍️ New Entry</a></p>
+      <p><a th:href="@{/entries}" style="color:#fff;">📖 View Entries</a></p>
+      <p><a th:href="@{/calendar}" style="color:#fff;">📅 Calendar View</a></p>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <h3>About</h3>
+      <p>This journal app lets you capture your thoughts, goals, memories and more — all in one place.</p>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <h3>Contact</h3>
+      <p>📧 yourjournal@email.com</p>
+      <p>📱 +91 987*******/p>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:30px;">© 2025 My Digital Journal. All rights reserved.</p>
+</div>
+
+<!-- Slideshow Script -->
+<script>
+  const images = [
+    "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80"
+  ];
+
+  let current = 0, next = 1;
+  const slide1 = document.getElementById("slide1");
+  const slide2 = document.getElementById("slide2");
+
+  slide1.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('${images[current]}')`;
+  slide2.style.opacity = 0;
+
+  setInterval(() => {
+    slide2.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('${images[next]}')`;
+    slide2.style.opacity = 1;
+    setTimeout(() => {
+      slide1.style.backgroundImage = slide2.style.backgroundImage;
+      slide2.style.opacity = 0;
+      current = next;
+      next = (next + 1) % images.length;
+    }, 1400);
+  }, 3000);
+</script>
+
+</body>
+</html>

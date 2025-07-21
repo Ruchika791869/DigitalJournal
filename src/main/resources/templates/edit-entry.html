@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Journal Entry</title>
+  <meta charset="UTF-8">
+</head>
+<body style="margin:0; font-family:'Segoe UI', sans-serif; background:linear-gradient(to right, #fdfcfb, #e2d1c3);">
+
+<!-- Navbar -->
+<div style="background:#333; padding:15px; display:flex; justify-content:space-between; align-items:center;">
+  <div style="color:white; font-weight:bold; font-size:20px; padding-left:20px;">
+    ✏️ Edit Journal Entry
+  </div>
+  <div style="padding-right:20px;">
+    <a th:href="@{/}" style="color:white; text-decoration:none; margin:0 10px;">🏠 Home</a>
+    <a th:href="@{/entries}" style="color:white; text-decoration:none; margin:0 10px;">📖 Entries</a>
+    <a th:href="@{/calendar}" style="color:white; text-decoration:none; margin:0 10px;">📅 Calendar</a>
+  </div>
+</div>
+
+<!-- Edit Form -->
+<div style="max-width:600px; margin:30px auto; background:white; padding:25px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+  <form th:action="@{/edit-entry}" method="post" th:object="${entry}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="title" style="font-weight:bold;">Title:</label><br>
+    <input type="text" id="title" th:field="*{title}" required style="width:100%; padding:8px; margin-bottom:15px;"><br>
+
+    <label for="content" style="font-weight:bold;">Content:</label><br>
+    <textarea id="content" th:field="*{content}" rows="6" required style="width:100%; padding:8px; margin-bottom:15px;"></textarea><br>
+
+    <label for="category" style="font-weight:bold;">Category:</label><br>
+    <select id="category" th:field="*{category}" required style="width:100%; padding:8px; margin-bottom:15px;">
+      <option value="Daily Thoughts">Daily Thoughts</option>
+      <option value="Goal Tracker">Goal Tracker</option>
+      <option value="Reflections">Reflections</option>
+      <option value="Memories">Memories</option>
+      <option value="Affirmations">Affirmations</option>
+    </select><br>
+
+    <label for="date" style="font-weight:bold;">Date:</label><br>
+    <input type="date" id="date" th:field="*{date}" required style="width:100%; padding:8px; margin-bottom:20px;"><br>
+
+    <button type="submit" style="padding:10px 20px; background:#007bff; color:white; border:none; border-radius:5px; cursor:pointer;">💾 Update Entry</button>
+  </form>
+</div>
+
+</body>
+</html>
